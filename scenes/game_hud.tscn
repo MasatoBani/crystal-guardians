@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://fx5xbqglbdjm"]
+
+[ext_resource type="Script" uid="uid://cjloubc5mxxfu" path="res://scripts/game_hud.gd" id="1_jna2d"]
+[ext_resource type="Texture2D" path="res://assets/ui/hud_panel.png" id="2_panel"]
+[ext_resource type="Texture2D" path="res://assets/items/crystal.png" id="3_crystal"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hud"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+texture = ExtResource("2_panel")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="GameHUD" type="CanvasLayer"]
+script = ExtResource("1_jna2d")
+
+[node name="HUDContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CrystalsPanel" type="PanelContainer" parent="HUDContainer"]
+mouse_filter = 2
+layout_mode = 1
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 16.0
+offset_bottom = 12.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hud")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDContainer/CrystalsPanel"]
+mouse_filter = 2
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CrystalIcon" type="TextureRect" parent="HUDContainer/CrystalsPanel/HBoxContainer"]
+custom_minimum_size = Vector2(22, 32)
+layout_mode = 2
+texture = ExtResource("3_crystal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CrystalLabel" type="Label" parent="HUDContainer/CrystalsPanel/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "0/3"
+vertical_alignment = 1
+
+[node name="QuestPanel" type="PanelContainer" parent="HUDContainer"]
+mouse_filter = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 12.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hud")
+
+[node name="QuestLabel" type="Label" parent="HUDContainer/QuestPanel"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "MISION: Habla con Han Solo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthPanel" type="PanelContainer" parent="HUDContainer"]
+mouse_filter = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_top = 12.0
+offset_right = -16.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hud")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="HUDContainer/HealthPanel"]
+mouse_filter = 2
+layout_mode = 2
+theme_override_constants/separation = 3
