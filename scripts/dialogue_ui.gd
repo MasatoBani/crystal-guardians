@@ -12,14 +12,6 @@ var is_open: bool = false
 func _ready() -> void:
 	panel.hide()
 	continue_button.pressed.connect(next_dialogue)
-	panel.gui_input.connect(_on_panel_gui_input)
-
-func _on_panel_gui_input(event: InputEvent) -> void:
-	# Tocar el panel (o clic) avanza el diálogo; útil en móvil.
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		next_dialogue()
-		panel.accept_event()
-
 func show_dialogue(character_name: String, dialogues: Array[String]) -> void:
 	if dialogues.is_empty():
 		return
