@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://uu2ogim4hy2v" path="res://scenes/dialogue_ui.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://fx5xbqglbdjm" path="res://scenes/game_hud.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://8b3u2cbckgnj" path="res://scenes/portal.tscn" id="11_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://mwwkp47bx5jv" path="res://scenes/mobile_controls.tscn" id="12_mobile"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbgi4"]
 texture = ExtResource("1_sugp2")
@@ -1179,5 +1178,3 @@ position = Vector2(1012, 450)
 position = Vector2(1105, 141)
 
 [node name="GameHUD" parent="." unique_id=565920768 instance=ExtResource("11_eb6dy")]
-
-[node name="MobileControls" parent="." instance=ExtResource("12_mobile")]

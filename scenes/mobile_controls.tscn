@@ -1,18 +1,11 @@
 [gd_scene format=3 uid="uid://mwwkp47bx5jv"]
 
 [ext_resource type="Script" uid="uid://cyka5s68ld8ic" path="res://scripts/mobile_controls.gd" id="1_k8ypl"]
-[ext_resource type="Texture2D" path="res://assets/ui/joystick_base.png" id="2_base"]
-[ext_resource type="Texture2D" path="res://assets/ui/joystick_knob.png" id="3_knob"]
-[ext_resource type="Texture2D" path="res://assets/ui/btn_attack.png" id="4_atk"]
-[ext_resource type="Texture2D" path="res://assets/ui/btn_attack_pressed.png" id="5_atk_p"]
-[ext_resource type="Texture2D" path="res://assets/ui/btn_interact.png" id="6_int"]
-[ext_resource type="Texture2D" path="res://assets/ui/btn_interact_pressed.png" id="7_int_p"]
 
-[node name="MobileControls" type="CanvasLayer"]
-layer = 10
+[node name="MobileControls" type="CanvasLayer" unique_id=142295059]
 script = ExtResource("1_k8ypl")
 
-[node name="Controls" type="Control" parent="."]
+[node name="Controls" type="Control" parent="." unique_id=706353636]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,23 +14,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="JoystickBase" type="TextureRect" parent="Controls"]
-modulate = Color(1, 1, 1, 0.75)
+[node name="JoystickBase" type="Control" parent="Controls" unique_id=1273065507]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = -190.0
-offset_right = 200.0
-offset_bottom = -30.0
-grow_vertical = 0
-mouse_filter = 2
-texture = ExtResource("2_base")
-expand_mode = 1
-stretch_mode = 5
+anchor_left = 0.82800007
+anchor_top = 0.69000006
+anchor_right = 0.82800007
+anchor_bottom = 0.69000006
+offset_left = 0.1439209
+offset_top = -0.120025635
+offset_right = 160.14392
+offset_bottom = 159.87997
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="JoystickKnob" type="TextureRect" parent="Controls/JoystickBase"]
+[node name="JoystickKnob" type="Control" parent="Controls/JoystickBase" unique_id=799306664]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,36 +40,7 @@ offset_right = 35.0
 offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_knob")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="ButtonsRoot" type="Control" parent="Controls"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -230.0
-offset_right = -30.0
-offset_bottom = -30.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
+[node name="AttackButton" type="TouchScreenButton" parent="Controls" unique_id=1383869961]
 
-[node name="AttackButton" type="TouchScreenButton" parent="Controls/ButtonsRoot"]
-modulate = Color(1, 1, 1, 0.85)
-position = Vector2(114, 104)
-texture_normal = ExtResource("4_atk")
-texture_pressed = ExtResource("5_atk_p")
-action = "player_attack"
-
-[node name="InteractButton" type="TouchScreenButton" parent="Controls/ButtonsRoot"]
-modulate = Color(1, 1, 1, 0.85)
-position = Vector2(6, 40)
-texture_normal = ExtResource("6_int")
-texture_pressed = ExtResource("7_int_p")
-action = "interact"
+[node name="InteractButton" type="TouchScreenButton" parent="Controls" unique_id=896433475]

@@ -1,4 +1,7 @@
+
 extends Area2D
+
+@export_file("*.tscn") var next_level: String
 
 var activated: bool = false
 
@@ -6,6 +9,11 @@ var activated: bool = false
 
 
 func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+	if QuestManager.quest_state == QuestManager.QuestState.COMPLETED:
+		activate_portal()
+
 	QuestManager.quest_completed.connect(activate_portal)
 
 
@@ -15,12 +23,21 @@ func activate_portal() -> void:
 	if sprite.sprite_frames.has_animation("active"):
 		sprite.play("active")
 
-	print("Portal activado")
-
 
 func _on_body_entered(body: Node2D) -> void:
-	if not activated:
+	if not body.is_in_group("player"):
 		return
 
-	if body.is_in_group("player"):
-		print("¡Nivel completado!")
+	if not activated:
+		print("Primero debes completar la misión")
+		return
+
+	if next_level.is_empty():
+		push_warning("No se configuró el siguiente nivel")
+		return
+
+	# Evitar que se active varias veces
+	set_deferred("monitoring", false)
+
+	# Cambiar de escena
+	get_tree().change_scene_to_file.call_deferred(next_level)
